@@ -1,4 +1,5 @@
-[![](https://badge.imagelayers.io/marteinn/postgres-backup-restore-s3:latest.svg)](https://imagelayers.io/?images=marteinn/postgres-backup-restore-s3:latest 'Get your own badge on imagelayers.io')
+[![Docker Pulls](https://img.shields.io/docker/pulls/marteinn/postgres-backup-restore-s3.svg)](https://hub.docker.com/r/marteinn/postgres-backup-restore-s3/)
+
 
 # Postgres-Backup-Restore-S3
 
