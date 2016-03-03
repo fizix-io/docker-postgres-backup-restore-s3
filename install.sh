@@ -1,13 +1,15 @@
 #! /bin/sh
-
-# exit if a command fails
 set -e
+
+echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 
 # update
 apk update
 
-# install pg_dump
-apk add postgresql=${POSTGRES_VERSION}
+apk add postgresql${POSTGRES_VERSION}
+
+echo "pg_dump version:"
+pg_dump -V
 
 # install s3 tools
 apk add python py-pip
