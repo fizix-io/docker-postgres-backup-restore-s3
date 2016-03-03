@@ -1,4 +1,6 @@
-# postgres-backup-restore-s3
+[![](https://badge.imagelayers.io/marteinn/postgres-backup-restore-s3:latest.svg)](https://imagelayers.io/?images=marteinn/postgres-backup-restore-s3:latest 'Get your own badge on imagelayers.io')
+
+# Postgres-Backup-Restore-S3
 
 Backup and restore PostgresSQL from S3
 
@@ -7,6 +9,7 @@ This dockerfile started out as a fork of the awesome [postgres-backup-s3](https:
 - Made it possible to pin another postgres version in dockerfile
 - Added so backup sends a current.sql.gz along with the timestamped backup
 - Removed cron job (since I have no need for it)
+- Supports both postgres 9.4 and 9.5
 
 ## Usage
 
@@ -24,7 +27,7 @@ postgres:
         POSTGRES_PASSWORD: password
 
 pgbackups3:
-    image: marteinn/postgres-backup-restore-s3
+    image: marteinn/postgres-backup-restore-s3:9.5
     links:
         - postgres
     environment:
