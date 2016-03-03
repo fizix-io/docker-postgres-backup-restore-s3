@@ -1,5 +1,4 @@
 #! /bin/sh
-
 set -e
 
 # Verify all en vars exist
