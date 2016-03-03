@@ -16,7 +16,7 @@ This dockerfile started out as a fork of the awesome [postgres-backup-s3](https:
 
 Docker:
 ```sh
-$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e POSTGRES_DATABASE=dbname -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_HOST=localhost marteinn/postgres-backup-restore-s3
+$ docker run -e S3_ACCESS_KEY_ID=key -e S3_SECRET_ACCESS_KEY=secret -e S3_BUCKET=my-bucket -e S3_PREFIX=backup -e POSTGRES_DATABASE=dbname -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -e POSTGRES_HOST=localhost marteinn/postgres-backup-restore-s3:9.5
 ```
 
 Docker Compose:
@@ -40,7 +40,6 @@ pgbackups3:
         POSTGRES_DATABASE: dbname
         POSTGRES_USER: user
         POSTGRES_PASSWORD: password
-        POSTGRES_VERSION: 9.4.6-rc1
 ```
 
 ### Restoring backup
