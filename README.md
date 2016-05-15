@@ -7,10 +7,12 @@ Backup and restore PostgresSQL from S3
 
 This dockerfile started out as a fork of the awesome [postgres-backup-s3](https://github.com/schickling/dockerfiles/tree/master/postgres-backup-s3), with a couple of changes:
 - Added restore ability
+- Made it possible to only download backup from s3
 - Made it possible to pin another postgres version in dockerfile
 - Added so backup sends a current.sql.gz along with the timestamped backup
 - Removed cron job (since I have no need for it)
 - Supports both postgres 9.4 and 9.5
+
 
 ## Usage
 
@@ -40,6 +42,7 @@ pgbackups3:
         POSTGRES_DATABASE: dbname
         POSTGRES_USER: user
         POSTGRES_PASSWORD: password
+        DOWNLOAD_PATH: /shared
 ```
 
 ### Restoring backup
@@ -49,3 +52,19 @@ pgbackups3:
 
 - Restore database from a specific backup
 `docker-compose run db_backup sh run.sh restore 2016-03-02T19:47:35Z`
+
+### Download backup
+
+- Download database from a specific backup
+`docker-compose run db_backup sh run.sh download`
+
+- Download database from a specific backup
+`docker-compose run db_backup sh run.sh download 2016-03-02t19:47:35z`
+
+
+## Building for dockerhub
+
+Make are used to simplify dockerhub distributions.
+
+- `make build`: Build images
+- `make push`: Push images to dockerhub
