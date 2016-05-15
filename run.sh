@@ -43,7 +43,7 @@ if [ "${POSTGRES_PASSWORD}" = "**None**" ]; then
 fi
 
 
-# Trigger either backup or restore
+# Trigger command
 command=${1-backup}
 
 if [ "$command" == "backup" ];
@@ -52,5 +52,8 @@ then
 elif [ "$command" == "restore" ];
 then
     source restore.sh
+elif [ "$command" == "download" ];
+then
+    source download.sh
 fi
 
