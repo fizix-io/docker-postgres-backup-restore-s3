@@ -11,7 +11,7 @@ This dockerfile started out as a fork of the awesome [postgres-backup-s3](https:
 - Made it possible to pin another postgres version in dockerfile
 - Added so backup sends a current.sql.gz along with the timestamped backup
 - Removed cron job (since I have no need for it)
-- Supports both postgres 9.4 and 9.5
+- Supports both postgres 9.4, 9.5, 9.6 and 10
 
 
 ## Usage
@@ -72,4 +72,4 @@ Make are used to simplify dockerhub distributions.
 
 ## License
 
- Postgres-Backup-Restore-S3 is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Postgres-Backup-Restore-S3 is released under the [MIT License](http://www.opensource.org/licenses/MIT).

@@ -1,8 +1,6 @@
 #! /bin/sh
 set -e
 
-echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
-
 # update
 apk update
 
