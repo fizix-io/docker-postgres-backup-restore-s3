@@ -68,3 +68,8 @@ Make are used to simplify dockerhub distributions.
 
 - `make build`: Build images
 - `make push`: Push images to dockerhub
+
+
+## License
+
+ Postgres-Backup-Restore-S3 is released under the [MIT License](http://www.opensource.org/licenses/MIT).
