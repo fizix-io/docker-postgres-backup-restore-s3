@@ -10,7 +10,7 @@ This dockerfile started out as a fork of the awesome [postgres-backup-s3](https:
 - Made it possible to only download backup from s3
 - Made it possible to pin another postgres version in dockerfile
 - Added so backup sends a current.sql.gz along with the timestamped backup
-- Removed cron job (since I have no need for it)
+- Removed built in cron job (I trigger through regular cron)
 - Supports both postgres 9.4, 9.5, 9.6 and 10
 
 
@@ -48,18 +48,26 @@ pgbackups3:
 ### Restoring backup
 
 - Restore database from the latest backup
-`docker-compose run db_backup sh run.sh restore`
+    ```
+    docker-compose run db_backup sh run.sh restore
+    ```
 
 - Restore database from a specific backup
-`docker-compose run db_backup sh run.sh restore 2016-03-02T19:47:35Z`
+    ```
+    docker-compose run db_backup sh run.sh restore 2016-03-02T19:47:35Z
+    ```
 
 ### Download backup
 
-- Download database from a specific backup
-`docker-compose run db_backup sh run.sh download`
+- Download database from the latest backup
+    ```
+    docker-compose run db_backup sh run.sh download
+    ```
 
 - Download database from a specific backup
-`docker-compose run db_backup sh run.sh download 2016-03-02t19:47:35z`
+    ```
+    docker-compose run db_backup sh run.sh download 2016-03-02t19:47:35z
+    ```
 
 
 ## Building for dockerhub
