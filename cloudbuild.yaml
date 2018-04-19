@@ -2,19 +2,10 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: [
           'build',
-          '--build-arg', 'ALPINE_VERSION=3.7',
-          '--build-arg', 'POSTGRES_VERSION=9.6',
-          '-t', 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:9.6',
-          '.'
-        ]
-- name: 'gcr.io/cloud-builders/docker'
-  args: [
-          'build',
-          '--build-arg', 'ALPINE_VERSION=3.7',
-          '--build-arg', 'POSTGRES_VERSION=10',
-          '-t', 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:10',
+          '--build-arg', 'ALPINE_VERSION=${_ALPINE_VERSION}',
+          '--build-arg', 'POSTGRES_VERSION=${_POSTGRES_VERSION}',
+          '-t', 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:${_POSTGRES_VERSION}',
           '.'
         ]
 images:
-  - 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:9.6'
-  - 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:10'
+  - 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:${_POSTGRES_VERSION}'
