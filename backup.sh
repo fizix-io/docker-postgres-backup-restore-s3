@@ -1,6 +1,7 @@
 #! /bin/sh
 set -e
 
+backup_name=${2-latest}
 
 # env vars needed for aws tools
 export AWS_ACCESS_KEY_ID=$S3_ACCESS_KEY_ID
@@ -14,9 +15,8 @@ echo "Creating dump of ${POSTGRES_DATABASE} database from ${POSTGRES_HOST}..."
 
 pg_dump $POSTGRES_HOST_OPTS $POSTGRES_DATABASE | gzip > dump.sql.gz
 
-echo "Uploading dumps to $S3_BUCKET"
+echo "Uploading dump to $S3_BUCKET"
 
-cat dump.sql.gz | aws s3 cp - s3://$S3_BUCKET/$S3_PREFIX/latest.sql.gz || exit 2
-cat dump.sql.gz | aws s3 cp - s3://$S3_BUCKET/$S3_PREFIX/$(date +"%Y-%m-%dT%H:%M:%SZ").sql.gz || exit 2
+cat dump.sql.gz | aws s3 cp - s3://$S3_BUCKET/$S3_PREFIX/${backup_name}.sql.gz || exit 2
 
 echo "SQL backup uploaded successfully"
