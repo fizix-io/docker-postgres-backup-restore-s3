@@ -3,7 +3,7 @@ steps:
   args: [
           'build',
           '--build-arg', 'ALPINE_VERSION=${_ALPINE_VERSION}',
-          '--build-arg', 'POSTGRES_VERSION=${_POSTGRES_VERSION}',
+          '--build-arg', 'POSTGRES_VERSION==${_POSTGRES_PACKAGE_VERSION}',
           '-t', 'gcr.io/$PROJECT_ID/postgres-backup-restore-s3:${_POSTGRES_VERSION}',
           '.'
         ]
