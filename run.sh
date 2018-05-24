@@ -2,13 +2,13 @@
 set -e
 
 # Verify all en vars exist
-if [ "${S3_ACCESS_KEY_ID}" = "**None**" ]; then
-    echo "You need to set the S3_ACCESS_KEY_ID environment variable."
+if [ "${AWS_ACCESS_KEY_ID}" = "**None**" ]; then
+    echo "You need to set the AWS_ACCESS_KEY_ID environment variable."
     exit 1
 fi
 
-if [ "${S3_SECRET_ACCESS_KEY}" = "**None**" ]; then
-    echo "You need to set the S3_SECRET_ACCESS_KEY environment variable."
+if [ "${AWS_SECRET_ACCESS_KEY}" = "**None**" ]; then
+    echo "You need to set the AWS_SECRET_ACCESS_KEY environment variable."
     exit 1
 fi
 
@@ -17,31 +17,20 @@ if [ "${S3_BUCKET}" = "**None**" ]; then
     exit 1
 fi
 
-if [ "${POSTGRES_DATABASE}" = "**None**" ]; then
-    echo "You need to set the POSTGRES_DATABASE environment variable."
+if [ "${PGHOST}" = "**None**" ]; then
+    echo "You need to set the PGHOST environment variable."
     exit 1
 fi
 
-if [ "${POSTGRES_HOST}" = "**None**" ]; then
-    if [ -n "${POSTGRES_PORT_5432_TCP_ADDR}" ]; then
-        POSTGRES_HOST=$POSTGRES_PORT_5432_TCP_ADDR
-        POSTGRES_PORT=$POSTGRES_PORT_5432_TCP_PORT
-    else
-        echo "You need to set the POSTGRES_HOST environment variable."
-        exit 1
-    fi
-fi
-
-if [ "${POSTGRES_USER}" = "**None**" ]; then
-    echo "You need to set the POSTGRES_USER environment variable."
+if [ "${PGUSER}" = "**None**" ]; then
+    echo "You need to set the PGUSER environment variable."
     exit 1
 fi
 
-if [ "${POSTGRES_PASSWORD}" = "**None**" ]; then
-    echo "You need to set the POSTGRES_PASSWORD environment variable or link to a container named POSTGRES."
+if [ "${PGPASSWORD}" = "**None**" ]; then
+    echo "You need to set the PGPASSWORD environment variable or link to a container named POSTGRES."
     exit 1
 fi
-
 
 # Trigger command
 command=${1-backup}
@@ -56,4 +45,3 @@ elif [ "$command" == "download" ];
 then
     source download.sh
 fi
-
