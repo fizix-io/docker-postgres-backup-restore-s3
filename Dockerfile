@@ -17,6 +17,7 @@ ENV S3_REGION us-west-1
 ENV S3_PATH 'backup'
 
 ENV DOWNLOAD_PATH '/shared'
+ENV PG_DUMPALL_COMMAND pg_dumpall
 
 ADD install.sh install.sh
 RUN sh install.sh && rm install.sh
